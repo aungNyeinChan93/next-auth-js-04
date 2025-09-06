@@ -1,4 +1,3 @@
-
 import fs from 'fs'
 import path from 'path'
 import { genSalt, hash, compare } from "bcrypt-ts";

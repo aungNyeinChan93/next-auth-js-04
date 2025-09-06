@@ -17,10 +17,8 @@ const NavbarComponent = () => {
     { name: "home", path: "/" },
     { name: "posts", path: "/posts" },
     { name: "users", path: "/users" },
-    // { name: "products", path: "/tests/products" },
-    // { name: "users", path: "/tests/users" },
-    // { name: "images", path: "/tests/images" },
-    // { name: "tests", path: "/tests" },
+    { name: "todos", path: "/todos" },
+    { name: "tests", path: "/demo/uploadFile" },
   ];
 
   const pathname = usePathname();
