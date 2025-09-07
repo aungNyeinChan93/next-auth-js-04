@@ -20,6 +20,7 @@ const NavbarComponent = async ({ session }: Props) => {
 
   const navLinks = [
     { name: "home", path: "/" },
+    { name: "Dashboard", path: "/private/dashboard" },
     { name: "posts", path: "/posts" },
     { name: "users", path: "/users" },
     { name: "todos", path: "/todos" },
