@@ -4,7 +4,7 @@ import { create } from 'zustand'
 
 export type TodoStoreType = {
     todos: Todo[];
-    getTodos: () => void | Todo[];
+    getTodos: () => undefined | Todo[] | [];
     setTodo: (newTodo: Todo | undefined) => void;
     changeStatus: (id: string | number) => void;
     deleteTodo: (id: number | string) => void;

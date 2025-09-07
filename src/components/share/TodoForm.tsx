@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import useTodoStore from "@/lib/zustand/todo-store";
@@ -8,7 +8,13 @@ import { Todo } from "@/app/todos/page";
 import TodoCard from "./TodoCard";
 
 const TodoForm = () => {
+  const todoRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    todoRef.current?.focus();
+  }, []);
+
   const { setTodo: addTodo, getTodos } = useTodoStore((store) => store);
+
   const [todo, setTodo] = useState<string | undefined>(undefined);
 
   const todos = getTodos();
@@ -30,6 +36,7 @@ const TodoForm = () => {
       <div className="flex flex-col gap-4">
         <section className="flex sm:w-[500px] items-center gap-2">
           <Input
+            ref={todoRef}
             type="text"
             placeholder="Task"
             className="py-5"

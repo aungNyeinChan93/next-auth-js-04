@@ -13,12 +13,28 @@ export async function loginWithGitHub() {
 }
 
 
-export async function loginWithCredential(formData: FormData) {
+export async function loginWithCredential(prevState: any, formData: FormData) {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
+    // console.log({email});
 
-    return
+    if (!email || !password) {
+        return { success: false, error: 'Some Fields are required!' }
+    }
+
+    try {
+        await signIn('credentials', { redirect: false, email, password });
+    } catch (error) {
+        if (error instanceof Error) {
+            // return { success: false, error: error?.message }
+            console.error(error?.message)
+            return { success: false, error: 'Credential Error!' }
+        }
+    }
+
+
+    return redirect('/')
 }
 
 
