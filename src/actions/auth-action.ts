@@ -17,8 +17,6 @@ export async function loginWithCredential(prevState: any, formData: FormData) {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
-    // console.log({email});
-
     if (!email || !password) {
         return { success: false, error: 'Some Fields are required!' }
     }
@@ -32,8 +30,6 @@ export async function loginWithCredential(prevState: any, formData: FormData) {
             return { success: false, error: 'Credential Error!' }
         }
     }
-
-
     return redirect('/')
 }
 
@@ -42,7 +38,6 @@ export async function registerAction(initialState: any, formData: FormData) {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
-
     if (!email || !password) {
         return { success: false, error: 'Some Fields Are Required!' }
     }
@@ -50,6 +45,7 @@ export async function registerAction(initialState: any, formData: FormData) {
     const isExist = await prisma.user.findUnique({
         where: { email }
     })
+
     if (isExist) {
         return { success: false, error: "email is already used!" }
     }
@@ -63,5 +59,6 @@ export async function registerAction(initialState: any, formData: FormData) {
         }
     }
     revalidatePath('/users')
-    return redirect('/api/auth/signin')
+    revalidatePath('/auth/login')
+    return redirect('/auth/login')
 }

@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import { genSalt, hash, compare } from "bcrypt-ts";
+import { auth } from '@/lib/authjs/auth';
+import { cache } from 'react';
 
 
 // post-image upload
@@ -27,3 +29,19 @@ export async function hashPassword(password: string | undefined, salt: number = 
 export async function checkPassword(plainStr: string | undefined, hashStr: string | undefined) {
     return await compare(plainStr as string, hashStr as string)
 }
+
+// isAuth
+export async function isAuth() {
+    const session = await auth();
+    if (!session) {
+        return false
+    } else {
+        return true;
+    }
+}
+
+// getSession 
+export const getSession = cache(async () => {
+    const session = await auth();
+    return session;
+})

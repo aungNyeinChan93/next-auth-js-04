@@ -1,7 +1,11 @@
+import { getSession } from "@/utils/helper";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const DemoOnePage = async () => {
+  const session = await getSession();
+  if (!session) redirect("/auth/login");
   return (
     <React.Fragment>
       <main>

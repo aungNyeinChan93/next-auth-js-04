@@ -1,5 +1,7 @@
 import TodoCard from "@/components/share/TodoCard";
 import TodoForm from "@/components/share/TodoForm";
+import { isAuth } from "@/utils/helper";
+import { redirect } from "next/navigation";
 import React from "react";
 
 export type Todo = {
@@ -10,6 +12,10 @@ export type Todo = {
 };
 
 const TodosPage = async () => {
+  // if (!(await isAuth())) {
+  //   return redirect("/auth/login");
+  // }
+
   return (
     <React.Fragment>
       <main className="w-full min-h-screen bg-gray-50">
