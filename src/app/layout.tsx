@@ -32,8 +32,10 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavbarComponent session={session} />
-        <main className="container mx-auto">{children}</main>
+        <main className="bg-slate-50 text-slate-900">
+          <NavbarComponent session={session} />
+          <div className="container mx-auto">{children}</div>
+        </main>
       </body>
     </html>
   );
