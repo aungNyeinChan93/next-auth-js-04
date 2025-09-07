@@ -11,7 +11,7 @@ interface Props {
   session?: Session | null;
 }
 
-const NavbarComponent = async ({ session }: Props) => {
+const NavbarComponent = ({ session }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleMenu() {
@@ -24,7 +24,6 @@ const NavbarComponent = async ({ session }: Props) => {
     { name: "posts", path: "/posts" },
     { name: "users", path: "/users" },
     { name: "todos", path: "/todos" },
-    { name: "tests", path: "/demo/uploadFile" },
   ];
 
   const pathname = usePathname();
